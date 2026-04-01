@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gereja Oraet Labora Malawa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style> 
+        :root {
+            --brown-deep: #3D2B1A;
+            --brown-dark: #5C3D21;
+            --brown-mid: #8B6035;
+            --brown-warm: #C49A5A;
+            --brown-light: #E8C98A;
+            --cream: #FBF5E6;
+            --cream-dark: #F3E8CC;
+            --gold: #D4A843;
+            --gold-light: #F0C96B;
+            --white: #FFFDF7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background-color: var(--cream);
+            color: var(--brown-deep);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--brown-warm);
+            border-radius: 3px;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--brown-deep) 0%, var(--brown-dark) 100%);
+            box-shadow: 0 2px 20px rgba(61, 43, 26, 0.4);
+        }
+
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.3);
+        }
+
+        .nav-brand-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1.2;
+        }
+
+        .nav-brand-sub {
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.72rem;
+            color: rgba(240, 201, 107, 0.7);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-link {
+            padding: 6px 14px;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            transition: all 0.25s;
+        }
+
+        .nav-link:hover {
+            color: var(--gold-light);
+            background: rgba(212, 168, 67, 0.15);
+        }
+
+        .nav-link.cta {
+            background: var(--gold);
+            color: var(--brown-deep);
+            font-weight: 600;
+            padding: 6px 16px;
+        }
+
+        .nav-link.cta:hover {
+            background: var(--gold-light);
+        }
+
+        /* ── HAMBURGER ── */
+        .ham-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .ham-line {
+            width: 24px;
+            height: 2px;
+            background: var(--gold-light);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .ham-btn.open .ham-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .ham-btn.open .ham-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-8px);
+        }
+
+        .ham-btn.open .ham-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--brown-deep);
+            border-top: 1px solid rgba(212, 168, 67, 0.2);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 14px 24px;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(212, 168, 67, 0.12);
+            color: var(--gold-light);
+            padding-left: 30px;
+        }
+
+        .mobile-menu a.cta {
+            background: var(--gold);
+            color: var(--brown-deep);
+            font-weight: 600;
+            margin: 12px 16px 16px;
+            border-radius: 8px;
+            border: none;
+            text-align: center;
+        }
+
+            /* ── HERO ── */
+     .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: 
+        /* linear-gradient(160deg, 
+            rgba(61, 43, 26, 0.55) 0%, 
+            rgba(92, 61, 33, 0.40) 45%, 
+            rgba(122, 82, 48, 0.35) 100%), */   
+        url('../images/Gedung-gereja1.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: scroll;
+    overflow: hidden;
+}
+
+@keyframes doveFloat {
+    0%   { transform: translateY(0px) translateX(0px); }
+    50%  { transform: translateY(-12px) translateX(8px); }
+    100% { transform: translateY(-6px) translateX(-5px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;   /* ← tambah padding bawah agar tidak ketutup stats */
+    width: 100%;
+}
+
+
+        .hero-bg-art {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 168, 67, 0.12);
+        }
+
+        .hero-circle-1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -100px;
+            border-width: 2px;
+            border-color: rgba(212, 168, 67, 0.08);
+        }
+
+        .hero-circle-2 {
+            width: 400px;
+            height: 400px;
+            top: -50px;
+            right: 50px;
+        }
+
+        .hero-circle-3 {
+            width: 800px;
+            height: 800px;
+            bottom: -400px;
+            left: -200px;
+            border-color: rgba(212, 168, 67, 0.05);
+        }
+
+        .hero-circle-4 {
+            width: 200px;
+            height: 200px;
+            bottom: 60px;
+            right: 15%;
+            border-color: rgba(212, 168, 67, 0.15);
+        }
+
+        .hero-cross {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.07;
+        }
+
+        .hero-cross svg {
+            width: 220px;
+            height: 280px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 168, 67, 0.15);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            color: var(--gold-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease both;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            color: var(--white);
+            line-height: 1.2;
+            max-width: 680px;
+            margin-bottom: 1.2rem;
+            animation: fadeInUp 0.9s 0.2s ease both;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-verse {
+            max-width: 580px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            line-height: 1.7;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s 0.4s ease both;
+        }
+
+        .hero-ref {
+            color: var(--gold-light);
+            font-size: 0.9rem;
+            font-style: normal;
+            letter-spacing: 0.05em;
+            animation: fadeInUp 1s 0.5s ease both;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s 0.6s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold);
+            color: var(--brown-deep);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(212, 168, 67, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 168, 67, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid rgba(212, 168, 67, 0.5);
+            color: var(--gold-light);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 168, 67, 0.12);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(61, 43, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(212, 168, 67, 0.15);
+            padding: 1.2rem 1.5rem;
+            animation: fadeInUp 1s 0.8s ease both;
+        }
+
+        .hero-stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ── SECTION COMMON ── */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--brown-warm);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+            color: var(--brown-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-line {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--brown-warm));
+            margin: 0 auto 1rem;
+            border-radius: 2px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: #6B5039;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── ABOUT (CARDS) ── */
+        .about-section {
+            padding: 5rem 1.5rem;
+            background: var(--cream);
+        }
+
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem;
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            box-shadow: 0 2px 16px rgba(61, 43, 26, 0.07);
+            transition: all 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--brown-warm));
+            transform: scaleX(0);
+            transition: transform 0.35s;
+            transform-origin: left;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(61, 43, 26, 0.13);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--brown-warm);
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(196, 154, 90, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: var(--brown-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            font-size: 0.97rem;
+            color: #5A4130;
+            line-height: 1.7;
+        }
+
+        /* ── HISTORY / TIMELINE ── */
+        .history-section {
+            padding: 5rem 1.5rem;
+            background: var(--white);
+        }
+
+        .history-inner {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), rgba(212, 168, 67, 0.2));
+        }
+
+        .tl-item {
+            position: relative;
+            padding-bottom: 2.2rem;
+        }
+
+        .tl-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.3);
+            margin-left: 3px;
+        }
+
+        .tl-card {
+            background: var(--cream);
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .tl-card:hover {
+            box-shadow: 0 6px 20px rgba(61, 43, 26, 0.1);
+            transform: translateX(4px);
+        }
+
+        .tl-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--brown-deep);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+        }
+
+        .tl-card h3 {
+            font-size: 1.2rem;
+            color: var(--brown-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .tl-card p {
+            font-size: 0.96rem;
+            color: #5A4130;
+            line-height: 1.7;
+        }
+
+        /* ── STRUKTUR BOX ── */
+        .struktur-box {
+            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            border: 1px solid rgba(196, 154, 90, 0.3);
+            border-top: 4px solid var(--gold);
+            border-radius: 14px;
+            padding: 2rem;
+        }
+
+        .struktur-box h3 {
+            font-size: 1.35rem;
+            color: var(--brown-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .struktur-box p {
+            font-size: 0.96rem;
+            color: #5A4130;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .stat-box {
+            background: var(--white);
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .stat-box .lbl {
+            font-size: 0.78rem;
+            color: #5A4130;
+            margin-top: 2px;
+            line-height: 1.3;
+        }
+
+        /* ── GALLERY ── */
+        .gallery-section {
+            padding: 5rem 1.5rem;
+            background: var(--cream);
+        }
+
+        .gallery-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 12px;
+        }
+
+        .g-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            aspect-ratio: 4/3;
+        }
+
+        .g-item:first-child {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .g-item:hover img {
+            transform: scale(1.07);
+        }
+
+        .g-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--brown-warm);
+            font-size: 0.88rem;
+            min-height: 150px;
+        }
+
+        .g-placeholder i {
+            font-size: 2rem;
+            opacity: 0.4;
+        }
+
+        .g-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(61, 43, 26, 0.8) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 14px;
+        }
+
+        .g-item:hover .g-overlay {
+            opacity: 1;
+        }
+
+        .g-overlay span {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .gallery-note {
+            margin-top: 1.2rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* ── JADWAL ── */
+        .jadwal-section {
+            padding: 5rem 1.5rem;
+            background: var(--white);
+        }
+
+        .jadwal-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .jadwal-card {
+            background: var(--cream);
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .jadwal-header {
+            background: linear-gradient(135deg, var(--brown-dark), var(--brown-deep));
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .jadwal-header i {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+        }
+
+        .jadwal-header h3 {
+            font-size: 1.15rem;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .jadwal-body {
+            padding: 1.5rem;
+        }
+
+        .jadwal-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(196, 154, 90, 0.15);
+            font-size: 0.97rem;
+            gap: 1rem;
+        }
+
+        .jadwal-row:last-child {
+            border-bottom: none;
+        }
+
+        .jadwal-row strong {
+            color: var(--brown-dark);
+        }
+
+        .jadwal-row span {
+            color: #7A5C3A;
+            text-align: right;
+            font-size: 0.92rem;
+        }
+
+        .jadwal-info {
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.1), rgba(196, 154, 90, 0.05));
+            border: 1px solid rgba(212, 168, 67, 0.25);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 1.4rem;
+            font-size: 0.97rem;
+            color: var(--brown-dark);
+        }
+
+        /* ── KONTAK ── */
+        .kontak-section {
+            padding: 5rem 1.5rem;
+            background: var(--cream);
+        }
+
+        .kontak-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .kontak-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .kontak-card {
+            background: var(--white);
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            border-radius: 14px;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .kontak-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(61, 43, 26, 0.1);
+        }
+
+        .kontak-card i {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .kontak-card h3 {
+            font-size: 1.1rem;
+            color: var(--brown-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .kontak-card p,
+        .kontak-card a {
+            font-size: 0.97rem;
+            color: #5A4130;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .kontak-card a:hover {
+            color: var(--brown-warm);
+        }
+
+        /* Form */
+        .form-section {
+            background: var(--white);
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            font-size: 1.4rem;
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid rgba(196, 154, 90, 0.3);
+            border-radius: 8px;
+            background: var(--cream);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            color: var(--brown-deep);
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--brown-dark), var(--brown-deep));
+            color: var(--gold-light);
+            padding: 12px 28px;
+            border-radius: 8px;
+            border: none;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(61, 43, 26, 0.25);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(61, 43, 26, 0.3);
+        }
+
+        /* Map */
+        .map-section {
+            background: var(--white);
+            border: 1px solid rgba(196, 154, 90, 0.2);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .map-header {
+            padding: 1.2rem 1.5rem;
+            background: var(--cream-dark);
+            border-bottom: 1px solid rgba(196, 154, 90, 0.2);
+        }
+
+        .map-header h3 {
+            font-size: 1.2rem;
+            color: var(--brown-dark);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            display: block;
+            height: 380px;
+            border: none;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: linear-gradient(160deg, var(--brown-deep) 0%, #2A1A0B 100%);
+            color: rgba(240, 201, 107, 0.8);
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-brand-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: rgba(240, 201, 107, 0.6);
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--gold-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.9rem;
+            color: rgba(240, 201, 107, 0.65);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-col address {
+            font-style: normal;
+            font-size: 0.9rem;
+            color: rgba(240, 201, 107, 0.65);
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(240, 201, 107, 0.1);
+            padding-top: 1.2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(240, 201, 107, 0.45);
+        }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 88vh;
+            border-radius: 10px;
+            object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .lb-close:hover {
+            color: var(--gold);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .ham-btn {
+                display: flex;
+            }
+
+            .hero-cross {
+                display: none;
+            }
+
+            .hero-stats-inner {
+                gap: 1.2rem;
+            }
+
+            .stat-num {
+                font-size: 1.3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .g-item:first-child {
+                grid-column: span 2;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .g-item:first-child {
+                grid-column: span 1;
+                aspect-ratio: 4/3;
+            }
+
+            .hero-stats-inner {
+                gap: 1rem;
+            }
+
+            .stat-num {
+                font-size: 1.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="#home" class="nav-brand">
+                <div class="nav-brand-icon">⛪</div>
+                <div>
+                    <div class="nav-brand-text">Oraet Labora Malawa</div>
+                    <div class="nav-brand-sub">GPID Jemaat</div>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#profil" class="nav-link">Profil</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#jadwal" class="nav-link">Jadwal</a>
+                <a href="#kontak" class="nav-link cta">Kontak</a>
+            </div>
+            <button class="ham-btn" id="ham-btn" aria-label="Menu">
+                <span class="ham-line"></span>
+                <span class="ham-line"></span>
+                <span class="ham-line"></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home">Beranda</a>
+            <a href="#profil">Profil</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#jadwal">Jadwal</a>
+            <a href="#kontak" class="cta">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+        <div class="hero-bg-art">
+            <div class="hero-circle hero-circle-1"></div>
+            <div class="hero-circle hero-circle-2"></div>
+            <div class="hero-circle hero-circle-3"></div>
+            <div class="hero-circle hero-circle-4"></div>
+        </div>
+        <div class="hero-cross">
+            <svg viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="40" y="0" width="20" height="130" fill="white" />
+                <rect x="0" y="35" width="100" height="20" fill="white" />
+            </svg>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fa-solid fa-church" style="font-size:0.75rem"></i> Sejak 1968 · Balaesang,
+                Donggala</div>
+            <h1>Selamat Datang di Gereja <span>Oraet Labora</span> Malawa</h1>
+            <p class="hero-verse">"Kamu telah menerima Kristus Yesus, Tuhan kita. Karena itu hendaklah hidupmu tetap di
+                dalam Dia, berakar di dalam Dia dan dibangun di atas Dia."</p>
+            <small class="hero-ref">— Kolose 2:6–7</small>
+            <div class="hero-btns">
+                <a href="#profil" class="btn-primary"><i class="fa-solid fa-book-bible"></i> Tentang Gereja</a>
+                <a href="#jadwal" class="btn-outline"><i class="fa-solid fa-calendar-days"></i> Jadwal Ibadah</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stats-inner">
+                <div class="stat-item">
+                    <div class="stat-num">1968</div>
+                    <div class="stat-label">Tahun Berdiri</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Kolom Jemaat</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">9</div>
+                    <div class="stat-label">Penatua</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Diaken</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROFIL / ABOUT ===== -->
+    <section id="profil" class="about-section">
+        <div class="about-inner">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Tentang Kami</span>
+                <h2 class="section-title">Gereja Oraet Labora Malawa</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Rumah persekutuan yang hidup dalam kasih Kristus, melayani jemaat di wilayah
+                    Balaesang sejak tahun 1968.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fa-solid fa-book-bible"></i></div>
+                    <h3>Sejarah</h3>
+                    <p>Berdiri sekitar tahun 1968, jemaat GPID "Ora Et Labora" Malawa berasal dari suku Pendau di Dusun
+                        VI Malawa, Desa Siweli, Kecamatan Balaesang, Kabupaten Donggala, Sulawesi Tengah.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h3>Visi</h3>
+                    <p>Menjadi gereja yang dewasa secara rohani, teguh dalam iman, dan berdampak bagi dunia melalui
+                        kasih Kristus yang nyata dalam kehidupan sehari-hari.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Misi</h3>
+                    <p>Memberitakan Firman Tuhan, membina pertumbuhan iman, mengembangkan pelayanan, dan melayani sesama
+                        dengan kasih yang tulus dan nyata.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEJARAH TIMELINE ===== -->
+    <section class="history-section">
+        <div class="history-inner">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Perjalanan Iman</span>
+                <h2 class="section-title">Sejarah Gereja</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline reveal">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-tag">Asal Usul</div>
+                        <h3>Suku Pendau, Dusun Malawa</h3>
+                        <p>Jemaat GPID "Ora Et Labora" Malawa pada mulanya adalah penduduk <strong>suku Pendau</strong>
+                            yang berdomisili di wilayah <strong>Desa Siweli, Dusun VI Malawa, Kecamatan Balaesang,
+                                Kabupaten Donggala, Provinsi Sulawesi Tengah</strong>.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-tag">± Tahun 1968</div>
+                        <h3>Pendirian Jemaat</h3>
+                        <p>Jemaat GPID "Ora Et Labora" Malawa resmi berdiri sekitar tahun 1968. Sejak saat itu,
+                            persekutuan umat Tuhan di wilayah ini terus bertumbuh dalam semangat doa dan pelayanan.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-tag">14 Agustus 2011</div>
+                        <h3>Pembangunan Gedung Gereja Baru</h3>
+                        <p>Karena gedung gereja lama tidak lagi mampu menampung seluruh jemaat, dimulailah pembangunan
+                            gedung gereja baru. Peletakan batu pertama dilakukan oleh <strong>Majelis Sinode GPID, Bapak
+                                Pdt. Selvianus Sekeon, S.Th, MA</strong>.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card"
+                        style="border-left-color: var(--brown-warm); background: linear-gradient(135deg, var(--cream-dark), var(--cream));">
+                        <div class="tl-tag" style="background: var(--brown-warm);">18 Desember 2017</div>
+                        <h3>Pertama Kali Digunakan — Natal Kolom Gabungan</h3>
+                        <p>Diadakan <strong>Ibadah Natal Kolom Gabungan</strong> di gedung gereja baru — pertama kalinya
+                            gedung ini digunakan oleh seluruh jemaat, sebuah momen bersejarah yang penuh syukur dan
+                            sukacita.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Struktur -->
+            <div class="struktur-box reveal">
+                <h3><i class="fa-solid fa-sitemap" style="color:var(--gold); margin-right:8px"></i>Struktur &
+                    Keanggotaan Jemaat</h3>
+                <p>Jemaat GPID "Ora Et Labora" Malawa dibagi menjadi <strong>4 Kolom</strong>, dengan susunan pelayan
+                    sebagai berikut:</p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="num">1</div>
+                        <div class="lbl">Pendeta Jemaat</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">9</div>
+                        <div class="lbl">Penatua</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">5</div>
+                        <div class="lbl">Diaken</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">3</div>
+                        <div class="lbl">Badan Pertimbangan</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">3</div>
+                        <div class="lbl">Badan Pengawas Perbendaharaan</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num">2</div>
+                        <div class="lbl">Kostor</div>
+                    </div>
+                    <div class="stat-box" style="grid-column: span 2;">
+                        <div class="num">13</div>
+                        <div class="lbl">Anggota Komisi-Komisi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-inner">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Dokumentasi</span>
+                <h2 class="section-title">Gallery Gereja</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Momen-momen berharga dalam perjalanan jemaat kami</p>
+            </div>
+
+            <div class="gallery-grid reveal">
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery1.jpg" alt="Ibadah Minggu"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i class="fa-solid fa-church"></i><span>Ibadah
+                            Minggu</span></div>
+                    <div class="g-overlay"><span>Ibadah Minggu</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery2.jpg" alt="Sekolah Minggu"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i class="fa-solid fa-book-open"></i><span>Sekolah
+                            Minggu</span></div>
+                    <div class="g-overlay"><span>Sekolah Minggu</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/natalpemuda.jpeg" alt="Kegiatan Pemuda"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i class="fa-solid fa-users"></i><span>Kegiatan
+                            Pemuda</span></div>
+                    <div class="g-overlay"><span>Kegiatan Pemuda</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery4.jpg" alt="Natal Kolom Gabungan"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i class="fa-solid fa-star"></i><span>Natal Kolom
+                            Gabungan</span></div>
+                    <div class="g-overlay"><span>Natal Kolom Gabungan</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery5.jpg" alt="Pelayanan majelis"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i
+                            class="fa-solid fa-hand-holding-heart"></i><span>Pelayanan majelis</span></div>
+                    <div class="g-overlay"><span>Pelayanan majelis</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery6.jpg" alt="Persekutuan Doa"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i
+                            class="fa-solid fa-hands-praying"></i><span>Persekutuan Doa</span></div>
+                    <div class="g-overlay"><span>Persekutuan Doa</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery7.jpg" alt="Gedung Gereja"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i
+                            class="fa-solid fa-building-columns"></i><span>Gedung Gereja</span></div>
+                    <div class="g-overlay"><span>Gedung Gereja</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery8.jpg" alt="Kegiatan Remaja"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i class="fa-solid fa-music"></i><span>Kegiatan
+                            Remaja</span></div>
+                    <div class="g-overlay"><span>Kegiatan Remaja</span></div>
+                </div>
+                <div class="g-item" onclick="openLB(this)">
+                    <img src="images/gallery9.jpg" alt="Bakti Sosial"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="g-placeholder" style="display:none"><i class="fa-solid fa-people-group"></i><span>Bakti
+                            Sosial</span></div>
+                    <div class="g-overlay"><span>Bakti Sosial</span></div>
+                </div>
+            </div>
+            <p class="gallery-note"><i class="fa-solid fa-circle-info" style="color:var(--gold)"></i> Simpan foto di
+                folder <code>images/</code> dengan nama <code>gallery1.jpg</code> s/d <code>gallery9.jpg</code></p>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" onclick="closeLB()">
+        <span class="lb-close">&times;</span>
+        <img id="lb-img" src="" alt="">
+    </div>
+
+    <!-- ===== JADWAL ===== -->
+    <section id="jadwal" class="jadwal-section">
+        <div class="jadwal-inner">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Pelayanan</span>
+                <h2 class="section-title">Jadwal Ibadah & Kegiatan</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Waktu pelayanan dan kegiatan gereja setiap minggunya</p>
+            </div>
+
+            <div class="jadwal-grid reveal">
+                <div class="jadwal-card">
+                    <div class="jadwal-header">
+                        <i class="fa-solid fa-church"></i>
+                        <h3>Ibadah Minggu</h3>
+                    </div>
+                    <div class="jadwal-body">
+                        <div class="jadwal-row"><strong>Ibadah Utama</strong><span>Minggu, 09:00 – 11:00</span></div>
+                        <div class="jadwal-row"><strong>Sekolah Minggu</strong><span>Minggu, 07:00 – 08:00</span></div>
+                        <div class="jadwal-row"><strong>Pemuda</strong><span>jumat, 19:30 – 20:30</span></div>
+                        <div class="jadwal-row"><strong>Remaja</strong><span>Sabtu, 19:00 – 20:00</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jadwal-info reveal">
+                <i class="fa-solid fa-circle-info" style="color:var(--gold);margin-right:8px"></i>
+                Untuk informasi lebih detail tentang jadwal dan acara khusus, silakan hubungi gereja melalui nomor
+                kontak yang tersedia.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAK ===== -->
+    <section id="kontak" class="kontak-section">
+        <div class="kontak-inner">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Hubungi Kami</span>
+                <h2 class="section-title">Kontak Gereja</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Kami siap membantu menjawab pertanyaan Anda</p>
+            </div>
+
+            <div class="kontak-grid reveal">
+                <div class="kontak-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Alamat</h3>
+                    <p>Dusun VI Malawa, Desa Siweli<br>Kec. Balaesang, Kab. Donggala<br>Sulawesi Tengah</p>
+                </div>
+                <div class="kontak-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>Telepon</h3>
+                    <p><a href="tel:+6281523917066">+62 081523917066</a></p>
+                </div>
+                <div class="kontak-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:gereja@oraetmalawa.org">gereja@oraetmalawa.org</a></p>
+                </div>
+            </div>
+
+            <div class="form-section reveal">
+                <h3><i class="fa-solid fa-comment-dots" style="color:var(--gold);margin-right:8px"></i>Kirim Pesan</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" placeholder="Nama lengkap Anda">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="email@anda.com">
+                    </div>
+                    <div class="form-group full">
+                        <label>Pesan</label>
+                        <textarea placeholder="Tuliskan pesan Anda..."></textarea>
+                    </div>
+                </div>
+                <button class="btn-submit" onclick="handleSubmit(this)">
+                    <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+                </button>
+            </div>
+
+            <div class="map-section reveal">
+                <div class="map-header">
+                    <h3><i class="fa-solid fa-map-location-dot" style="color:var(--gold);margin-right:8px"></i>Lokasi
+                        Gereja</h3>
+                </div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48875.27193899782!2d119.8613084!3d0.0182715!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3275f60b30aa9569%3A0xeec227137fb3ff43!2sGPID%20Jemaat%20Ora%20Et%20Labora!5e1!3m2!1sid!2sid!4v1770444628118!5m2!1sid!2sid"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="footer-brand-icon">⛪</div>
+                        <div class="footer-brand-name">Gereja Oraet Labora Malawa</div>
+                    </div>
+                    <p class="footer-tagline">Tempat bertumbuh dalam iman dan kasih Kristus sejak 1968.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#profil">Profil</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#jadwal">Jadwal</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <address>
+                        Dusun VI Malawa, Desa Siweli<br>
+                        Kec. Balaesang, Kab. Donggala<br>
+                        Sulawesi Tengah<br>
+                        <a href="tel:+6281523917066"
+                            style="color:rgba(240,201,107,0.65);text-decoration:none">081523917066</a>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Gereja Oraet Labora Malawa · All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Hamburger ──
+        const hamBtn = document.getElementById('ham-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamBtn.addEventListener('click', () => {
+            hamBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                hamBtn.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // ── Smooth scroll ──
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+
+        // ── Scroll reveal ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── Lightbox ──
+        function openLB(item) {
+            const img = item.querySelector('img');
+            if (!img || img.style.display === 'none') return;
+            document.getElementById('lb-img').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLB() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+
+        // ── Form submit ──
+        function handleSubmit(btn) {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Pesan Terkirim!';
+            btn.style.background = 'linear-gradient(135deg, #3a6b35, #2d5429)';
+            btn.style.color = '#a8e6a3';
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Pesan';
+                btn.style.background = '';
+                btn.style.color = '';
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
