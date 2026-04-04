@@ -1041,96 +1041,171 @@
         }
 
         /* ── FOOTER ── */
-        footer {
-            background: linear-gradient(160deg, var(--brown-deep) 0%, #2A1A0B 100%);
-            color: rgba(240, 201, 107, 0.8);
-            padding: 3rem 1.5rem 1.5rem;
-        }
+  footer {
+    background: linear-gradient(160deg, var(--brown-deep) 0%, #2A1A0B 100%);
+    color: rgba(240, 201, 107, 0.8);
+    padding: 0;
+    overflow: hidden;
+}
 
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.footer-ornament-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 24px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(240,201,107,0.13);
+}
+.footer-ornament-bar .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(240,201,107,0.22));
+}
+.footer-ornament-bar .ornament-line.r {
+    background: linear-gradient(to left, transparent, rgba(240,201,107,0.22));
+}
+.footer-ornament-bar .ornament-cross {
+    font-size: 13px;
+    color: rgba(240,201,107,0.45);
+    letter-spacing: 6px;
+}
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.4rem 2rem 0;
+}
 
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(240,201,107,0.1);
+    align-items: start;
+}
 
-        .footer-brand-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+}
 
-        .footer-brand-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.95rem;
-            color: var(--gold-light);
-        }
+.footer-brand-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(240,201,107,0.12);
+    border: 1px solid rgba(240,201,107,0.28);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
 
-        .footer-tagline {
-            font-size: 0.9rem;
-            color: rgba(240, 201, 107, 0.6);
-            line-height: 1.6;
-        }
+.footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    color: var(--gold-light);
+    line-height: 1.35;
+}
 
-        .footer-col h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            color: var(--gold-light);
-            margin-bottom: 0.8rem;
-        }
+.footer-tagline {
+    font-size: 0.8rem;
+    color: rgba(240,201,107,0.5);
+    line-height: 1.55;
+    margin: 0;
+}
 
-        .footer-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+.footer-col h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.72rem;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(240,201,107,0.45);
+    font-weight: 400;
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(240,201,107,0.1);
+}
 
-        .footer-col ul li a {
-            font-size: 0.9rem;
-            color: rgba(240, 201, 107, 0.65);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+.footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
-        .footer-col ul li a:hover {
-            color: var(--gold-light);
-        }
+.footer-col ul li a {
+    font-size: 0.82rem;
+    color: rgba(240,201,107,0.58);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: color 0.2s;
+}
 
-        .footer-col address {
-            font-style: normal;
-            font-size: 0.9rem;
-            color: rgba(240, 201, 107, 0.65);
-            line-height: 1.8;
-        }
+.footer-col ul li a::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(240,201,107,0.3);
+    flex-shrink: 0;
+}
 
-        .footer-bottom {
-            border-top: 1px solid rgba(240, 201, 107, 0.1);
-            padding-top: 1.2rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(240, 201, 107, 0.45);
-        }
+.footer-col ul li a:hover { color: var(--gold-light); }
 
-        /* ── LIGHTBOX ── */
+.contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+}
+
+.contact-icon {
+    font-size: 11px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    opacity: 0.65;
+}
+
+.contact-text {
+    font-size: 0.8rem;
+    color: rgba(240,201,107,0.58);
+    line-height: 1.65;
+}
+
+.contact-text a {
+    color: rgba(240,201,107,0.72);
+    text-decoration: none;
+}
+
+.footer-bottom-wrap {
+    padding: 0.75rem 0 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-copy {
+    font-size: 0.76rem;
+    color: rgba(240,201,107,0.35);
+}
+
+.footer-bottom-motto {
+    font-size: 0.76rem;
+    color: rgba(240,201,107,0.28);
+    font-style: italic;
+}        /* ── LIGHTBOX ── */
         .lightbox {
             display: none;
             position: fixed;
@@ -1301,7 +1376,6 @@
             <a href="#kontak" class="cta">Kontak</a>
         </div>
     </nav>
-
     <!-- ===== HERO ===== -->
     <section id="home" class="hero">
         <div class="hero-bg-art">
@@ -1657,43 +1731,56 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-brand">
-                        <div class="footer-brand-icon">⛪</div>
-                        <div class="footer-brand-name">Gereja Oraet Labora Malawa</div>
-                    </div>
-                    <p class="footer-tagline">Tempat bertumbuh dalam iman dan kasih Kristus sejak 1968.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigasi</h4>
-                    <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#profil">Profil</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#jadwal">Jadwal</a></li>
-                        <li><a href="#kontak">Kontak</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontak</h4>
-                    <address>
-                        Dusun VI Malawa, Desa Siweli<br>
-                        Kec. Balaesang, Kab. Donggala<br>
-                        Sulawesi Tengah<br>
-                        <a href="tel:+6281523917066"
-                            style="color:rgba(240,201,107,0.65);text-decoration:none">081523917066</a>
-                    </address>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 Gereja Oraet Labora Malawa · All rights reserved.
-            </div>
+   <footer>
+  <div class="footer-ornament-bar">
+    <div class="ornament-line"></div>
+    <div class="ornament-cross">✝ ✝ ✝</div>
+    <div class="ornament-line r"></div>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-brand-icon">⛪</div>
+          <div class="footer-brand-name">Gereja Oraet Labora Malawa</div>
         </div>
-    </footer>
-
+        <p class="footer-tagline">Tempat bertumbuh dalam iman dan kasih Kristus sejak 1968.</p>
+        <div class="footer-badge">✦ Berdiri sejak 1968</div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#jadwal">Jadwal</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            Dusun VI Malawa, Desa Siweli<br>
+            Kec. Balaesang, Kab. Donggala<br>
+            Sulawesi Tengah
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">
+            <a href="tel:+6281523917066">081523917066</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-wrap">
+      <span class="footer-bottom-copy">&copy; 2026 Gereja Oraet Labora Malawa · All rights reserved.</span>
+      <span class="footer-bottom-motto">Ora et Labora · Doa dan Karya</span>
+    </div>
+  </div>
+</footer>
     <script>
         // ── Hamburger ──
         const hamBtn = document.getElementById('ham-btn');
